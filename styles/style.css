@@ -1,5 +1,149 @@
 /* Основные стили проекта. Это стили для темы, которую вы верстаете первой. */
-
+/*-----COMMON-----*/
 .page {
   /* сохраните в разметке и стилях класс page у тега body. Он удобен, чтобы составлять селекторы для разных цветовых тем. */
+  background-image: var(--cover-image-url); 
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  background-color: var(--bg-cover-color);
+  font-size: var(--text-size);
+  font-family: var(--text-family);
+  padding-inline: 10px;
+}
+
+.title-decor {
+  background-color: var(--accent-color);
+  color: var(--title-color);
+  font-weight: 700;
+  line-height: 130%;
+}
+
+.title-decor--skinny {
+  font-weight: 400;
+}
+
+/*-----HEADER-----*/
+
+.header {
+  block-size: 100vh;
+  min-block-size: 668px;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+/*TODO: .header::before + after для уголков*/
+/*TODO: record-icon оказывается это текстовый тег какой-то 
+с абсолютным позиционированием чисто в темной теме
+а вот псевдоэлемент с точкой - норм
+Декоративный текст нужно скрыть от программ для чтения с экрана — делается это с помощью aria-атрибута.*/
+
+.record-icon {
+  justify-self: flex-end;
+  color: var(--accent-color);
+  line-height: 25px;
+  font-weight: 400;
+}
+
+.record-icon::after {
+  content: "";
+  display: inline-block;
+  background-color: var(--accent-color);
+  block-size: 9px;
+  inline-size: 9px;
+  border-radius: 50%;
+  box-shadow: 0 0 4px 2px var(--accent-color);
+}
+
+.header__theme-menu {
+  justify-self: flex-end;
+  color: var(--accent-color);
+}
+
+.header__theme-menu-button {
+  border: none;
+  background-color: transparent;
+  text-transform: lowercase;
+  padding: 1.5px 13px;
+}
+.header__theme-menu-button_active {
+  outline: 1px solid;
+}
+
+.header__theme-menu-button:hover {
+  --opacity: 0.4; /*TODO: неработает, либо вернутся к первоначальному виду, либо исправить*/
+  outline: 1px solid var(--accent-color);
+}
+
+.header__theme-menu-button:focus-visible {
+  outline: none;
+  border-block-end: 1px solid;
+}
+
+.hero{
+  display: flex;
+  flex-direction: column;
+  gap: 55px;
+  align-self: center;
+}
+
+.hero__title {
+  font-weight: 700;
+  font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+  line-height: 83%;
+  color: var(--hero-color);
+  text-shadow: 4px 4px 0 var(--accent-color);
+}
+
+/*-----MAIN-----*/
+
+.content {
+  background-color: var(--bg-cover-color);
+  padding-block: 40px;
+}
+
+.content__element {
+  display: grid;
+  grid-template-columns: 1fr;
+  line-height: 130%;
+  gap: 20px;
+}
+
+.element__title {
+  color: var(--accent-color);
+  font-weight: 700;
+  font-size: var(--text-size);
+}
+
+.element__card {
+  display: grid;
+  gap: 10px;
+  color: var(--text-color);
+}
+
+.card__title {
+  font-size: var(--text-size);
+}
+
+.text-anchor {
+  text-shadow: 2px 2px 0 var(--accent-color);
+  text-decoration: none;
+}
+
+.text-anchor:hover {
+  text-decoration: underline;
+}
+
+.text-anchor:focus-visible {
+  outline: 1px solid var(--text-size);
+}
+
+.card__gallery {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.card__gallery img {
+  inline-size: 100%;
 }
