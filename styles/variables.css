@@ -1,17 +1,13 @@
-/*
-  Переменные для вашего проекта
-  и их переопределение под различные устройства
-*/
 :root {
-  --opacity: 1;
-  --cover-image-url: url(../images/cover-image.png); /*TODO: какая начальная картинка? Обычная или с темной темой? */
+  --cover-image-url: url(../images/cover-image-dark.png); /*TODO: какая начальная картинка? Обычная или с темной темой? */
   --bg-cover-color: #000028;
   --text-size: 18px;
-  --text-family: 'IBM Plex mono', serif;
-  --accent-color: rgba(255, 0, 112, var(--opacity));
-  --text-color: #F1B2CE;
-  --hero-color: #DB00FF;
+  --text-family: "IBM Plex mono", serif;
+  --accent-color: #ff0070;
+  --text-color: #f1b2ce;
+  --hero-color: #db00ff;
   --title-color: #000028;
-  /*TODO: Отступы тоже перевести в переменные*/
   --base-padding: 10px;
+  --outline-hover: rgba(255, 0, 112, 0.4);
+  --heading-color: #ff0070;
 }

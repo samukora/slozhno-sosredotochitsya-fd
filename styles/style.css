@@ -1,8 +1,6 @@
-/* Основные стили проекта. Это стили для темы, которую вы верстаете первой. */
 /*-----COMMON-----*/
 .page {
-  /* сохраните в разметке и стилях класс page у тега body. Он удобен, чтобы составлять селекторы для разных цветовых тем. */
-  background-image: var(--cover-image-url); 
+  background-image: var(--cover-image-url);
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
@@ -33,8 +31,8 @@
   right: var(--base-padding);
   block-size: 25px;
   inline-size: 25px;
-  border-top: 1px solid var(--accent-color);
-  border-right: 1px solid var(--accent-color);
+  border-top: 1px solid var(--heading-color);
+  border-right: 1px solid var(--heading-color);
 }
 
 .decorated-zone:after {
@@ -44,8 +42,8 @@
   left: var(--base-padding);
   block-size: 25px;
   inline-size: 25px;
-  border-bottom: 1px solid var(--accent-color);
-  border-left: 1px solid var(--accent-color);
+  border-bottom: 1px solid var(--heading-color);
+  border-left: 1px solid var(--heading-color);
 }
 
 .record-icon {
@@ -83,7 +81,7 @@
 .header__theme-menu {
   justify-self: center;
   align-self: end;
-  color: var(--accent-color);
+  color: var(--heading-color);
   padding-block-start: 10px;
 }
 
@@ -102,12 +100,12 @@
 }
 
 .header__theme-menu-button_active {
-  outline: 1px solid;
+  outline: 1px solid currentColor;
+  pointer-events: none
 }
 
 .header__theme-menu-button:hover {
-  --opacity: 0.4; /*TODO: неработает, либо вернутся к первоначальному виду, либо исправить*/
-  outline: 1px solid var(--accent-color);
+  outline: 1px solid var(--outline-hover);
 }
 
 .header__theme-menu-button:focus-visible {
@@ -123,7 +121,6 @@
   text-shadow: 4px 4px 0 var(--accent-color);
   padding-block-start: 10px;
 }
-
 
 /*-----MAIN-----*/
 
@@ -143,7 +140,7 @@
 }
 
 .element__title {
-  color: var(--accent-color);
+  color: var(--heading-color);
   font-weight: 700;
   font-size: var(--text-size);
 }
@@ -198,7 +195,7 @@
   padding-inline: var(--base-padding);
 }
 
-.footer_title {
+.footer__title {
   font-weight: 700;
   font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
   line-height: 83%;
@@ -214,13 +211,13 @@
   }
 
   .header__title {
-    margin-inline-start: calc(var(--base-padding)*-1);
+    margin-inline-start: calc(var(--base-padding) * -1);
     font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
   }
 
   .header__subtitle {
     align-self: end;
-    max-inline-size: 51%;
+    max-inline-size: 50%;
   }
 
   .content {
@@ -252,9 +249,9 @@
     inline-size: 100%;
     block-size: 100%;
     object-fit: cover;
-}
+  }
   .content__element--gallery {
-    display:block
+    display: block;
   }
 
   .gallery__item:nth-child(1) {
@@ -288,19 +285,30 @@
 }
 
 @media (width >= 1024px) {
+  .header {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: min-content 4fr 3fr;
+  }
 
   .header__theme-menu {
     position: relative;
-    top: -130px;
-    align-self: center;
+    justify-self: center;
+    align-self: start;
+    padding-block-start: 0;
   }
 
   .header__theme-menu-list {
     flex-direction: row;
   }
 
-  .content {
-    padding-block: 40px;
+  .header__title {
+    align-self: end;
+  }
+
+  .header__subtitle {
+    align-self: center;
+    justify-self: end;
   }
 
   .element__cards--full {
@@ -310,5 +318,8 @@
   .element__cards-item {
     block-size: min-content;
   }
-}
 
+  .card__gallery {
+    aspect-ratio: 16 / 17;
+  }
+}
