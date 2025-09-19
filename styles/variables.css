@@ -13,4 +13,5 @@
   --hero-color: #DB00FF;
   --title-color: #000028;
   /*TODO: Отступы тоже перевести в переменные*/
+  --base-padding: 10px;
 }

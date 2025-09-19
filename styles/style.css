@@ -9,7 +9,6 @@
   background-color: var(--bg-cover-color);
   font-size: var(--text-size);
   font-family: var(--text-family);
-  padding-inline: 10px;
 }
 
 .title-decor {
@@ -23,22 +22,36 @@
   font-weight: 400;
 }
 
-/*-----HEADER-----*/
-
-.header {
-  block-size: 100vh;
-  min-block-size: 668px;
-  display: grid;
-  grid-template-columns: 1fr;
+.decorated-zone {
+  position: relative;
 }
 
-/*TODO: .header::before + after для уголков*/
-/*TODO: record-icon оказывается это текстовый тег какой-то 
-с абсолютным позиционированием чисто в темной теме
-а вот псевдоэлемент с точкой - норм
-Декоративный текст нужно скрыть от программ для чтения с экрана — делается это с помощью aria-атрибута.*/
+.decorated-zone:before {
+  content: "";
+  position: absolute;
+  top: var(--base-padding);
+  right: var(--base-padding);
+  block-size: 25px;
+  inline-size: 25px;
+  border-top: 1px solid var(--accent-color);
+  border-right: 1px solid var(--accent-color);
+}
+
+.decorated-zone:after {
+  content: "";
+  position: absolute;
+  bottom: var(--base-padding);
+  left: var(--base-padding);
+  block-size: 25px;
+  inline-size: 25px;
+  border-bottom: 1px solid var(--accent-color);
+  border-left: 1px solid var(--accent-color);
+}
 
 .record-icon {
+  position: absolute;
+  top: var(--base-padding);
+  right: calc(var(--base-padding) + 9px);
   justify-self: flex-end;
   color: var(--accent-color);
   line-height: 25px;
@@ -49,15 +62,35 @@
   content: "";
   display: inline-block;
   background-color: var(--accent-color);
+  margin-inline-start: 10px;
   block-size: 9px;
   inline-size: 9px;
   border-radius: 50%;
   box-shadow: 0 0 4px 2px var(--accent-color);
 }
 
+/*-----HEADER-----*/
+
+.header {
+  block-size: 100vh;
+  min-block-size: 668px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: var(--base-padding);
+}
+
 .header__theme-menu {
-  justify-self: flex-end;
+  justify-self: center;
+  align-self: end;
   color: var(--accent-color);
+  padding-block-start: 10px;
+}
+
+.header__theme-menu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .header__theme-menu-button {
@@ -65,7 +98,9 @@
   background-color: transparent;
   text-transform: lowercase;
   padding: 1.5px 13px;
+  cursor: pointer;
 }
+
 .header__theme-menu-button_active {
   outline: 1px solid;
 }
@@ -80,26 +115,24 @@
   border-block-end: 1px solid;
 }
 
-.hero{
-  display: flex;
-  flex-direction: column;
-  gap: 55px;
-  align-self: center;
-}
-
-.hero__title {
+.header__title {
   font-weight: 700;
   font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
   line-height: 83%;
   color: var(--hero-color);
   text-shadow: 4px 4px 0 var(--accent-color);
+  padding-block-start: 10px;
 }
+
 
 /*-----MAIN-----*/
 
 .content {
+  display: grid;
+  gap: 50px;
   background-color: var(--bg-cover-color);
   padding-block: 40px;
+  padding-inline: var(--base-padding);
 }
 
 .content__element {
@@ -115,7 +148,13 @@
   font-size: var(--text-size);
 }
 
-.element__card {
+.element__cards {
+  display: grid;
+  gap: 20px;
+  color: var(--text-color);
+}
+
+.element__cards-item {
   display: grid;
   gap: 10px;
   color: var(--text-color);
@@ -131,11 +170,11 @@
 }
 
 .text-anchor:hover {
-  text-decoration: underline;
+  border-bottom: 1px solid var(--text-color);
 }
 
 .text-anchor:focus-visible {
-  outline: 1px solid var(--text-size);
+  outline: 1px solid var(--text-color);
 }
 
 .card__gallery {
@@ -147,3 +186,129 @@
 .card__gallery img {
   inline-size: 100%;
 }
+
+/*-----FOOTER-----*/
+
+.footer {
+  block-size: 100vh;
+  min-block-size: 668px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-inline: var(--base-padding);
+}
+
+.footer_title {
+  font-weight: 700;
+  font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+  line-height: 83%;
+  color: var(--hero-color);
+  text-shadow: 2px 2px 0 var(--accent-color);
+}
+
+/*-----ADAPTIVE-----*/
+
+@media (width >= 768px) {
+  :root {
+    --base-padding: 20px;
+  }
+
+  .header__title {
+    margin-inline-start: calc(var(--base-padding)*-1);
+    font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
+  }
+
+  .header__subtitle {
+    align-self: end;
+    max-inline-size: 51%;
+  }
+
+  .content {
+    padding-block: 60px;
+    gap: 80px;
+  }
+
+  .content__element {
+    grid-template-columns: 1fr 2fr;
+  }
+
+  .element__cards {
+    grid-template-columns: 1fr;
+  }
+
+  .element__cards--full {
+    grid-column: 1 / 3;
+  }
+
+  .card__gallery {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    aspect-ratio: 14 / 15;
+    margin-block-start: 10px;
+    gap: 20px;
+  }
+
+  .gallery__item {
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+}
+  .content__element--gallery {
+    display:block
+  }
+
+  .gallery__item:nth-child(1) {
+    grid-column: 1 / 3;
+    grid-row: 1 / 2;
+  }
+
+  .gallery__item:nth-child(2) {
+    grid-column: 3 / 4;
+    grid-row: 1 / 3;
+  }
+
+  .gallery__item:nth-child(3) {
+    grid-column: 1 / 2;
+    grid-row: 2 / 4;
+  }
+
+  .gallery__item:nth-child(4) {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+  }
+
+  .gallery__item:nth-child(5) {
+    grid-column: 2 / 4;
+    grid-row: 3 / 4;
+  }
+
+  .footer__title {
+    font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
+  }
+}
+
+@media (width >= 1024px) {
+
+  .header__theme-menu {
+    position: relative;
+    top: -130px;
+    align-self: center;
+  }
+
+  .header__theme-menu-list {
+    flex-direction: row;
+  }
+
+  .content {
+    padding-block: 40px;
+  }
+
+  .element__cards--full {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .element__cards-item {
+    block-size: min-content;
+  }
+}
+

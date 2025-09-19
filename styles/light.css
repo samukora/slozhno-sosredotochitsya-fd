@@ -16,3 +16,8 @@
   --hero-color: #FFC2E6;
   --title-color: #353430;
 }
+
+.theme-light .record-icon {
+  display: none;
+}
+
