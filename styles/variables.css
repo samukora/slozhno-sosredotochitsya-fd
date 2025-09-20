@@ -2,7 +2,7 @@
   --cover-image-url: url(../images/cover-image-dark.png);
   --bg-cover-color: #000028;
   --text-size: 18px;
-  --text-family: "IBM Plex mono", serif;
+  --text-family: "IBM Plex mono", monospace;
   --accent-color: #ff0070;
   --text-color: #f1b2ce;
   --hero-color: #db00ff;
