@@ -1,5 +1,5 @@
 :root {
-  --cover-image-url: url(../images/cover-image-dark.png); /*TODO: какая начальная картинка? Обычная или с темной темой? */
+  --cover-image-url: url(../images/cover-image-dark.png);
   --bg-cover-color: #000028;
   --text-size: 18px;
   --text-family: "IBM Plex mono", serif;
