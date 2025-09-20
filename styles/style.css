@@ -110,6 +110,10 @@
   outline: 1px solid var(--outline-hover);
 }
 
+.header__theme-menu-button:focus {
+  outline: none;
+}
+
 .header__theme-menu-button:focus-visible {
   outline: none;
   border-block-end: 1px solid;
