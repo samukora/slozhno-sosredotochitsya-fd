@@ -218,7 +218,7 @@
   text-shadow: 2px 2px 0 var(--accent-color);
 }
 
-/*-----ADAPTIVE-----*/
+/*-----ADAPTIVE_768-----*/
 
 @media (width >= 768px) {
   :root {
@@ -298,6 +298,8 @@
     font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
   }
 }
+
+/*-----ADAPTIVE_1024-----*/
 
 @media (width >= 1024px) {
   .header {
